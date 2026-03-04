@@ -1177,7 +1177,7 @@ const SetupWizard: React.FC<SetupWizardProps> = props => {
               disabled={state.isGeneratingRandom}
             >
               <span style={{ color: colors.secondary, fontSize: 16, fontWeight: '600' }}>
-                🎲 Generate all
+                🎲 Generate Character and Adventure Name
               </span>
             </button>
           )}

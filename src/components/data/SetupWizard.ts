@@ -390,19 +390,14 @@ export const useSetupWizardLogic = ({
     await withRandomizeAdCheck(async () => {
       setName('Randomizing...');
       setCharacterName('Randomizing...');
-      setCharacterDesc('Randomizing...');
       setIsGeneratingRandom(true);
       try {
-        // Auto-select theme based on time (changes every minute)
-        const timeBasedIndex = Math.floor(Date.now() / 60000) % FREE_THEMES.length;
-        const selectedTheme = FREE_THEMES[timeBasedIndex];
-        setThemeChoice(selectedTheme);
-
-        // Now generate other values using the selected theme
-        const randoms = await fetchRandomValues(selectedTheme, undefined, characterGender);
+        // Keep the current theme - only generate Adventure Name and Character Name
+        const currentTheme = getCurrentTheme();
+        const randoms = await fetchRandomValues(currentTheme, undefined, characterGender);
         setName(randoms.name || name || 'A New Adventure');
         setCharacterName(randoms.characterName || 'Hero');
-        setCharacterDesc(randoms.characterDesc || 'A mysterious figure.');
+        // Do NOT change characterDesc or theme
       } finally {
         setIsGeneratingRandom(false);
       }
