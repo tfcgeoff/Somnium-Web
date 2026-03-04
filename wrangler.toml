@@ -1,0 +1,8 @@
+# Cloudflare Pages Configuration for Somnium Web
+name = "somnium-web"
+compatibility_date = "2024-01-01"
+
+pages_build_output_dir = "dist"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
