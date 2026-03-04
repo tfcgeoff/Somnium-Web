@@ -1,0 +1,11 @@
+[2026-03-03T23:15:13.213Z] [TEST] === Testing Image Display in Browser ===
+[2026-03-03T23:15:13.214Z] [TEST] Testing image display with base64 data URI
+[2026-03-03T23:15:13.280Z] [debug] (http://localhost:5173/@vite/client:732:8) [vite] connecting...
+[2026-03-03T23:15:13.295Z] [debug] (http://localhost:5173/@vite/client:826:11) [vite] connected.
+[2026-03-03T23:15:13.412Z] [info] (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=46c8fbc0:20100:53) %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-03T23:15:13.464Z] [log] (http://localhost:5173/src/services/userIdService.ts?t=1772565813131:29:10) [User ID] NEW: 5a32689f-8efe-4108-b35b-7301420a9603
+[2026-03-03T23:15:13.467Z] [log] (http://localhost:5173/src/services/userIdService.ts?t=1772565813131:29:10) [User ID] EXISTING: 5a32689f-8efe-4108-b35b-7301420a9603
+[2026-03-03T23:15:13.468Z] [log] (http://localhost:5173/src/App.tsx?t=1772579672448:101:14) User ID initialized: 5a32689f-8efe-4108-b35b-7301420a9603
+[2026-03-03T23:15:13.469Z] [log] (http://localhost:5173/src/App.tsx?t=1772579672448:101:14) User ID initialized: 5a32689f-8efe-4108-b35b-7301420a9603
+[2026-03-03T23:15:15.505Z] [TEST] ✅ Image loaded successfully in browser!
+[2026-03-03T23:15:15.669Z] [TEST] Image display test complete

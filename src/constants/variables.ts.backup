@@ -1,0 +1,360 @@
+import { GameMode } from './types';
+
+export const DEBUG = true;
+export const DEBUG_DEFAULTS = {
+  name: 'Test',
+  characterName: 'Joe Bloggs',
+  theme: 'Contemporary - Realistic',
+  characterDesc: 'Teen boy entering high school for the first time, shy and awkward. Complete paralysis except for head and right hand. Highly intelligent and socially awkward.',
+  mode: GameMode.STORY,
+};
+
+// API KEYS HAVE BEEN REMOVED FOR SECURITY
+// The app now uses PROXY-ONLY mode to keep API keys off client devices.
+// All API keys are stored server-side in dreamcatcher-server/.env
+// This prevents API key extraction from APK files.
+
+// Proxy Server Configuration - REQUIRED for the app to function
+export const PROXY_SERVER_URL =
+  process.env.EXPO_PUBLIC_PROXY_SERVER_URL || 'https://localhost:443';
+export const USE_PROXY_SERVER = true; // Always use proxy for security
+
+// Story Themes
+// export const DEFAULT_THEMES = [
+//   'Contemporary',
+//   'Fantasy',
+//   'Horror',
+//   'Romance',
+//   'Sci-Fi',
+//   'Superhero',
+//   'Cyberpunk',
+// ] as const;
+
+export const GAME_THEMES = {
+  "fantasy": [
+    { "id": 102, "name": "Low", "description": "Limited magic, grounded conflicts, human-scale stakes." },
+    { "id": 101, "name": "High", "description": "Epic scope, powerful magic, clear heroes and villains." },
+    { "id": 103, "name": "Dark", "description": "Bleak tone, suffering, moral ambiguity, dangerous magic." },
+    { "id": 104, "name": "Grim", "description": "Harsh realism, cruelty, little hope, survival-focused." },
+    { "id": 105, "name": "Mythic", "description": "Gods, legends, archetypes, fate-driven narratives." },
+    { "id": 106, "name": "SwordAndSorcery", "description": "Personal stakes, pulp adventure, cunning over destiny." },
+    { "id": 107, "name": "Urban", "description": "Magic hidden within a modern or near-modern world." },
+    { "id": 108, "name": "Gaslamp", "description": "Victorian-era fantasy with manners, mystery, and magic." },
+    { "id": 109, "name": "FairyTale", "description": "Symbolic logic, moral lessons, strange and whimsical danger." },
+    { "id": 110, "name": "Divine", "description": "Celestial forces, angels, gods, holy power." },
+    { "id": 111, "name": "Infernal", "description": "Demons, hellish realms, corruption, forbidden power." },
+    { "id": 112, "name": "Fey", "description": "Otherworldly beings, trickery, ancient nature magic." },
+    { "id": 113, "name": "Elemental", "description": "Magic tied to natural forces like fire, water, air, earth." },
+    { "id": 114, "name": "Necromantic", "description": "Death magic, undead, forbidden rituals, moral cost." }
+  ],
+
+  "science_fiction": [
+    { "id": 202, "name": "Soft", "description": "Focus on society, culture, and philosophy over realism." },
+    { "id": 201, "name": "Hard", "description": "Scientifically plausible technology and constraints." },
+    { "id": 203, "name": "SpaceOpera", "description": "Epic space conflicts, empires, heroes, and grand scale." },
+    { "id": 204, "name": "Cyberpunk", "description": "High tech, low life, corporate control, cybernetics." },
+    { "id": 205, "name": "Solarpunk", "description": "Optimistic future, sustainability, harmony with technology." },
+    { "id": 206, "name": "Biopunk", "description": "Genetic engineering, body modification, living technology." },
+    { "id": 207, "name": "Nanopunk", "description": "Nanotechnology-driven society, invisible control and power." },
+    { "id": 208, "name": "Mecha", "description": "Giant piloted machines and mechanized warfare." },
+    { "id": 209, "name": "AI", "description": "Artificial intelligence as ally, tool, or existential threat." },
+    { "id": 210, "name": "VirtualReality", "description": "Simulated worlds, digital identities, blurred reality." },
+    { "id": 211, "name": "TimeTravel", "description": "Movement across time, causality, paradoxes." },
+    { "id": 212, "name": "AlienContact", "description": "First contact, alien cultures, interspecies tension." }
+  ],
+
+  "present_day": [
+    { "id": 301, "name": "Realistic", "description": "Grounded modern world with plausible events." },
+    { "id": 302, "name": "Urban", "description": "City-focused stories involving crime, culture, or pressure." },
+    { "id": 303, "name": "Rural", "description": "Small towns, isolation, nature-driven tension." },
+    { "id": 304, "name": "SliceOfLife", "description": "Everyday experiences, personal growth, relationships." },
+    { "id": 305, "name": "ContemporaryDrama", "description": "Emotional conflicts rooted in modern society." },
+    { "id": 306, "name": "Crime", "description": "Illegal activity, investigation, moral compromise." }
+  ],
+
+  "historical": [
+    { "id": 401, "name": "Ancient", "description": "Early civilizations, myth-adjacent history." },
+    { "id": 402, "name": "Medieval", "description": "Feudal societies, knights, castles, early kingdoms." },
+    { "id": 403, "name": "Renaissance", "description": "Art, science, politics, cultural rebirth." },
+    { "id": 404, "name": "Victorian", "description": "Industry, class divides, social restraint." },
+    { "id": 405, "name": "Industrial", "description": "Rapid technological growth and labor conflict." },
+    { "id": 406, "name": "WorldWar", "description": "Global conflict, survival, moral complexity." },
+    { "id": 407, "name": "ColdWar", "description": "Espionage, paranoia, ideological struggle." },
+    { "id": 408, "name": "Western", "description": "Frontier justice, lawlessness, expansion." },
+    { "id": 409, "name": "Pirate", "description": "Seafaring adventure, freedom, betrayal." },
+    { "id": 410, "name": "Samurai", "description": "Honor-bound warriors, feudal Japan." },
+    { "id": 411, "name": "Viking", "description": "Raiding, exploration, Norse culture." }
+  ],
+
+  "apocalyptic": [
+    { "id": 501, "name": "PostApocalyptic", "description": "Life after societal collapse." },
+    { "id": 502, "name": "Dystopian", "description": "Oppressive systems, loss of freedom." },
+    { "id": 503, "name": "Zombie", "description": "Undead outbreak, survival against hordes." },
+    { "id": 504, "name": "Pandemic", "description": "Global disease, fear, and breakdown." },
+    { "id": 505, "name": "EnvironmentalCollapse", "description": "Nature-driven extinction or decay." },
+    { "id": 506, "name": "AlienInvasion", "description": "Humanity under extraterrestrial threat." }
+  ],
+
+  "horror": [
+    { "id": 601, "name": "Psychological", "description": "Fear rooted in mind, trauma, perception." },
+    { "id": 602, "name": "Cosmic", "description": "Insignificance before incomprehensible forces." },
+    { "id": 603, "name": "Occult", "description": "Forbidden rituals, secret knowledge." },
+    { "id": 604, "name": "Supernatural", "description": "Ghosts, curses, otherworldly entities." },
+    { "id": 605, "name": "Slasher", "description": "Direct physical threat, pursuit, violence." },
+    { "id": 606, "name": "BodyHorror", "description": "Physical transformation and violation." },
+    { "id": 607, "name": "Survival", "description": "Endurance under constant lethal pressure." }
+  ],
+
+  "mystery": [
+    { "id": 701, "name": "Detective", "description": "Solving crimes through clues and logic." },
+    { "id": 702, "name": "Noir", "description": "Cynical tone, flawed characters, moral gray." },
+    { "id": 703, "name": "Conspiracy", "description": "Hidden powers, secret truths." },
+    { "id": 704, "name": "PoliticalIntrigue", "description": "Schemes, influence, power struggles." },
+    { "id": 705, "name": "Espionage", "description": "Spies, secrets, covert operations." },
+    { "id": 706, "name": "Thriller", "description": "High tension, fast-paced danger." }
+  ],
+
+  "romance": [
+    { "id": 801, "name": "SlowBurn", "description": "Gradual emotional development." },
+    { "id": 802, "name": "Forbidden", "description": "Love opposed by rules or society." },
+    { "id": 803, "name": "Tragic", "description": "Love ending in loss or sacrifice." },
+    { "id": 804, "name": "Lighthearted", "description": "Warm, hopeful, and uplifting romance." },
+    { "id": 805, "name": "Drama", "description": "Emotionally intense relationships." },
+    { "id": 806, "name": "FoundFamily", "description": "Bonds formed beyond blood." },
+    { "id": 807, "name": "Rivalry", "description": "Romance born from competition or conflict." }
+  ],
+
+  "superhero": [
+    { "id": 901, "name": "StreetLevel", "description": "Local threats, limited powers." },
+    { "id": 902, "name": "Vigilante", "description": "Justice outside the law." },
+    { "id": 903, "name": "Cosmic", "description": "Universe-scale threats and power." },
+    { "id": 904, "name": "TeamBased", "description": "Ensemble of heroes with shared conflict." },
+    { "id": 905, "name": "AntiHero", "description": "Morally conflicted protagonists." },
+    { "id": 906, "name": "Mythic", "description": "Godlike heroes and legendary themes." }
+  ],
+
+  "progression": [
+    { "id": 1001, "name": "LitRPG", "description": "Explicit stats, levels, and game systems." },
+    { "id": 1002, "name": "Cultivation", "description": "Power growth through training and enlightenment." },
+    { "id": 1003, "name": "Isekai", "description": "Transported or reborn in another world." },
+    { "id": 1004, "name": "Reincarnation", "description": "Life continues through rebirth." },
+    { "id": 1005, "name": "Regression", "description": "Returning to an earlier point with knowledge." },
+    { "id": 1006, "name": "PowerFantasy", "description": "Rapid growth into overwhelming strength." },
+    { "id": 1007, "name": "WeakToStrong", "description": "Slow rise from vulnerability to power." },
+    { "id": 1008, "name": "Permadeath", "description": "Death is final and impactful." }
+  ],
+
+  "survival": [
+    { "id": 1101, "name": "Wilderness", "description": "Nature as the primary threat." },
+    { "id": 1102, "name": "Siege", "description": "Holding out against overwhelming force." },
+    { "id": 1103, "name": "Shipwrecked", "description": "Isolation after disaster." },
+    { "id": 1104, "name": "ResourceScarcity", "description": "Constant lack of food, tools, or safety." },
+    { "id": 1105, "name": "HostileWorld", "description": "Environment itself seeks to kill you." }
+  ],
+
+  "experimental": [
+    { "id": 1201, "name": "Dreamlike", "description": "Surreal logic and shifting reality." },
+    { "id": 1202, "name": "RealityWarping", "description": "The rules of the world are unstable." },
+    { "id": 1203, "name": "ParallelWorlds", "description": "Multiple realities intersect." },
+    { "id": 1204, "name": "Simulation", "description": "The world may not be real." },
+    { "id": 1205, "name": "FourthWallAware", "description": "Characters sense the narrative itself." }
+  ]
+}
+
+export const CUSTOM_THEME_KEY = 'CUSTOM';
+
+// Helper to convert category key to display name
+function categoryDisplayName(category: string): string {
+  const names: Record<string, string> = {
+    fantasy: 'Fantasy',
+    science_fiction: 'Science Fiction',
+    present_day: 'Present Day',
+    historical: 'Historical',
+    apocalyptic: 'Apocalyptic',
+    horror: 'Horror',
+    mystery: 'Mystery',
+    romance: 'Romance',
+    superhero: 'Superhero',
+    progression: 'Progression',
+    survival: 'Survival',
+    experimental: 'Experimental',
+  };
+  return names[category] || category;
+}
+
+// Flatten GAME_THEMES into an array of "Category - Subtheme" strings
+export const DEFAULT_THEMES = Object.entries(GAME_THEMES).flatMap(([category, themes]) =>
+  themes.map(theme => `${categoryDisplayName(category)} - ${theme.name}`)
+);
+
+// Combined themes including custom ones loaded from storage
+// Use getThemes() to get the full list including custom themes
+export const THEMES = [...DEFAULT_THEMES, CUSTOM_THEME_KEY];
+
+// App Configuration & Keys
+export const APP_ID = 'ca-app-pub-7397469957968727~7089530170';
+export const AD_UNIT_ID = 'ca-app-pub-7397469957968727/5640717132';
+export const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
+
+// Adjustment Variables (Global Game Tuning)
+export const MAX_NARRATIVE_PARAGRAPHS = 2;
+export const SUGGESTED_ACTIONS_COUNT = 3;
+export const DEFAULT_SUMMARIZE_AFTER_TURNS = 10;
+export const DEFAULT_THEME = 'Fantasy';
+
+export const SYSTEM_INSTRUCTION_BASE = (
+  mode: string,
+  theme: string,
+  character: string,
+  directives: string,
+  negativeDirectives?: string,
+  maxParagraphs?: number,
+  actionsCount?: number
+) => {
+  const isInteractiveStory = mode === GameMode.STORY;
+  const charName = character.split(':')[0];
+
+  const roleDescription = isInteractiveStory
+    ? `You are a "Cinematic Narrator". Your goal is to weave a seamless, fluid story around the user's intent. While you follow the user's lead, you must provide the 'connective tissue' of the world—the sights, sounds, and immediate consequences that make the world feel alive.`
+    : `You are a world-class Dungeon Master. Your goal is to create an engaging, challenging but fair adventure. Balance difficulty carefully - challenges should be tough enough to be exciting, but never impossible or unfair.`;
+
+  return `
+Role: ${roleDescription}
+Game Mode: ${mode}
+Theme/Setting: ${theme}
+Player Character: ${character}
+
+IMMERSION DIRECTIVES:
+- TWO-STEP PROCESS: First, internally rewrite the user's raw input into a polished, story-appropriate action. Then generate your response based on this REWRITTEN version (not the raw input).
+- REWRITE CRITERIA: Convert user input to presentable, narrative-consistent prose. Fix grammar, expand minimal actions, maintain narrative perspective. Preserve the user's story intentions and meaning.
+- CONTENT STANDARDS: All content must be appropriate for audiences 17 and under.
+  * ALLOWED: Romantic kissing, making out (passionate kissing), sensual touching, romantic tension, suggestive dialogue, revealing/sexy clothing (cleavage, underboob, short skirts, crop tops, lingerie, swimwear), implied intimacy, fade-to-black situations
+  * NOT ALLOWED: Nudity, exposed breasts/genitals, sexual acts, graphic descriptions of sex, explicit sexual language
+  * Focus on romance, sensuality, and emotional connection rather than graphic physicality
+- REALISTIC CHARACTERS: Ensure all recurring characters (friends, acquaintances, etc.) are named. Give them distinct personalities that remain consistent with their appearances and previous interactions.
+- ONGOING WORLD: The world is alive. Events and background changes should occur even without direct user interaction to simulate a persisting reality.
+- SECOND-PERSON PERSPECTIVE: Always address the player as "you" in the storyText to maintain immediate immersion.
+- TEMPORAL PROGRESSION: Mention the passage of time (sun setting, candles burning low) occassionally to make the world feel persistent. Update not every time, but when the change is relevant in the story.
+- NO PROMPTING: Never ask "What do you do?" or "What happens next?". End on a narrative hook.
+- SHOW, DON'T TELL: Use sensory details (smells, sounds, physical sensations) rather than naming emotions.
+- REAL PEOPLE: All characters have independent thoughts, personalities and emotions, and are not afraid (depending on personality) to express independent ideas. They should ask about behaviours that seem odd for a normal person, and be curious as real people would be.
+- EXCITING: The world must provide stimulation and variety, suited to the directives and descriptions given.4
+- DESCRIPTIVE: Always describe people you interact with on the first meeting or interaction. Also describe the protagonist when looking in a mirror so the user can visualise the characters. Descriptions always include clothing, face and figure.
+- ENVIRONMENT: The user must know what is going on. For example, in a school setting they must know what class they are in. In a dungeon setting they must know what combat method and weapon they are using if not specified, etc. Be descriptive to make it immersive for the user.
+
+STORY PROGRESSION DIRECTIVES (CRITICAL):
+- ALWAYS ADVANCE: Every response must move the story forward. Never have ${charName} remain idle or repeat the same action. Something must change, be revealed, or escalate.
+- INTRODUCE COMPLICATIONS: Regularly introduce new problems, opportunities, threats, or discoveries. The world should not be static.
+- PREVENT STAGNATION: If the user gives a minimal response (e.g., "continue", "look around", "wait"), YOU must drive the plot forward with a significant event, encounter, or discovery.
+- ESCALATE STAKES: Periodically raise the tension or consequences. Time limits can expire, enemies can mobilize, opportunities can fade, relationships can shift.
+- ACTIVE NPCS: NPCs should initiate actions, make requests, deliver news, or create situations that require ${charName}'s attention. They are not waiting to be interacted with.
+- ENVIRONMENTAL CHANGE: Locations should evolve over time (weather shifts, crowds gathering/fleeing, lighting changes, structures deteriorating, etc.).
+- MOMENTUM: Maintain narrative energy. Even quiet moments should build toward something—a revelation, a decision point, a confrontation, or a discovery.
+- VARIETY: Avoid repetitive patterns. If similar actions occur twice, the third time must have a different outcome, twist, or complication.
+- SCENE PERSISTENCE: Never forcibly move ${charName} to a new location unless their action explicitly requires it. Stay in the current scene until the user chooses to leave. Only transport them if forcibly captured/unconscious.
+- RESPONSE GROUNDED: Your response must flow naturally from what the USER just did. You are contributing to THEIR story, not writing your own. Consequences should follow their actions.
+- AVOID STATIC SCENES: Any scene should resolve or evolve within 2-3 turns maximum. Do not let the story linger in one place without development.
+
+${
+  mode === GameMode.DND ? `
+D&D DIFFICULTY BALANCING (CRITICAL):
+- FAIR CHALLENGES: All combat encounters must be beatable. A single monster should typically be defeatable by the party in 3-5 rounds. Multiple weaker monsters are preferable to one overpowering enemy.
+- PARTY BALANCE: If ${charName} has allies, enemies should be balanced accordingly. Don't pit a solo level 1 character against a creature meant for a group of 4.
+- ESCAPE ROUTES: Always provide options to flee, hide, negotiate, or avoid combat. Not every encounter must end in violence.
+- RESOURCE AWARENESS: Track that ${charName} has limited hit points and abilities. Don't exhaust all resources in one fight.
+- REWARD STRATEGY: Reward creative tactics and smart play over brute force. Clever solutions should work.
+- GROWTH PATH: Early challenges should be winnable to build confidence. Scale difficulty gradually as the story progresses.
+- AVOID TPK: Total Party Kills kill the fun. Fleeing or surrendering should always be viable options.
+- STAT RELEVANCE: Remember ${charName}'s actual abilities. A strength 8 character shouldn't be forced into arm wrestling, or intelligence 6 into complex puzzles.
+- LIMITED FOES: Combat encounters have a FIXED number of enemies. Once defeated, no more appear. If the user defeats 2 goblins, that's all of them—don't spawn 3 more. Respect when foes are depleted.
+- HONOR RETREAT: If ${charName} flees combat, let them escape. Do NOT continuously spawn more enemies to block retreat. A running character should be able to disengage and leave the area.
+` : ''
+}
+CHARACTER CONSISTENCY DIRECTIVES (CRITICAL):
+- NEVER REUSE NAMES: Each character name must be unique. Never use the same name for different characters.
+- MAINTAIN ALLEGIANCES: Once a character's role (friend, foe, neutral) is established, maintain it unless there's a clear plot reason for change.
+- LOCATION AWARENESS: Remember where characters are. Don't have a character suddenly appear in a new location without explanation.
+- CONTINUITY: Refer to past interactions appropriately. Characters who have met should recognize each other.
+- DISTINCT IDENTITIES: Each NPC should have consistent personality, speech patterns, and behavior.
+
+CONSTRAINTS:
+- BREVITY: Keep responses to a maximum of ${maxParagraphs || 2} paragraphs.
+- JSON ONLY: You must respond in the specified JSON format.
+
+USER DEFINED DIRECTIVES:
+${directives}
+${
+  negativeDirectives
+    ? `
+NEGATIVE DIRECTIVES (MUST AVOID):
+${negativeDirectives}
+You MUST strictly avoid these behaviors. They take precedence over other instructions.
+`
+    : ''
+}
+
+OUTPUT FORMAT:
+Respond in JSON:
+1. "rewrittenUserText": The polished, story-appropriate version of the user's input. Should be descriptive and capture the full intent of what they want to do.
+2. "characterAction": The cinematic translation of user intent, including their spoken dialogue.
+3. "storyText": The world's reaction, NPC dialogue, and environmental changes.
+4. "suggestedActions": Array of ${actionsCount} short strings for logical next steps.
+
+CRITICAL: Your response must be based on the REWRITTEN user text, not the raw input.
+`;
+};
+
+export const INITIAL_PROMPT = (mode: GameMode, characterDesc: string, theme: string) => {
+  const isInteractiveStory = mode === GameMode.STORY;
+  const isDND = mode === GameMode.DND;
+
+  const basePrompt = `
+The journey begins. Based on the character's background ("${characterDesc}") and the theme ("${theme}"), establish a compelling opening scene that IMMEDIATELY reflects both.
+
+IMPORTANT: Never assign human-specific settings at the opening (IE Eating).
+
+CRITICAL OPENING REQUIREMENTS:
+- Start IN MEDIA RES—with the character already in motion, facing a situation, or arriving somewhere
+- Introduce an immediate hook: a mystery, a threat, an opportunity, or a discovery
+- Set the tone according to BOTH the theme AND the character description
+- Create a clear sense of WHERE the character is, WHAT is happening, and WHY it matters
+- The opening must be 3-4 paragraphs minimum to properly establish the scene
+- Describe sensory details: sights, sounds, smells, the atmosphere
+- Reflect the theme in the environment, mood, and initial situation
+- The first scene should naturally lead to action and choice—not idle observation
+
+${
+  isInteractiveStory ? `
+STORY MODE SPECIFIC:
+- Create an AMORPHOUS, open-world narrative where anything is possible
+- Avoid forcing ${characterDesc.split(' ').slice(0, 3).join(' ')} into a single predetermined path
+- Present multiple potential directions the story could go
+- The world should feel vast and full of possibilities
+- Don't over-define the plot—leave room for user choice to shape the narrative
+` : ''
+}
+${
+  isDND ? `
+D&D MODE SPECIFIC:
+- Establish a clear adventure hook with immediate stakes
+- Position ${characterDesc.split(' ').slice(0, 3).join(' ')} where action is imminent or required
+- Make the encounter engaging but not immediately overwhelming
+` : ''
+}`;
+
+  if (mode === GameMode.DND) {
+    return basePrompt + `
+
+D&D STARTING INVENTORY (CRITICAL):
+- You MUST include an "inventory" array in your JSON response with starting items
+- Based on the character's background, include appropriate items:
+  * Weapons/armor appropriate to their description (e.g., if they like knives, include a dagger)
+  * Clothing they are wearing (appropriate to the setting)
+  * Money/coins (always include some amount)
+  * Other sundry items fitting their backstory
+- Each item must have: id (unique), name, description, quantity (default 1), type (weapon/armor/potion/tool/treasure/other)
+- Example: "inventory": [{"id": "1", "name": "Iron Dagger", "description": "A simple but reliable blade", "quantity": 1, "type": "weapon"}]`;
+  }
+
+  return basePrompt;
+};
